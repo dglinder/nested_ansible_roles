@@ -14,6 +14,10 @@
       debug:
         msg: "This is from the first part of the testing01.yml  playbook : {{ global_variable }}"
 
+    - name: "Now leaving first block of testing01.yml playbook."
+      debug:
+        msg: "Leaving first block of testing01.yml."
+
 ################################
 # Stand-alone imported playbooks
 - name: Include role_gamma_super outisde of the hosts/roles/tasks
