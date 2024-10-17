@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: "Task in role Gamma Super"
+    debug:
+      msg: "This is from role Gamma Super"

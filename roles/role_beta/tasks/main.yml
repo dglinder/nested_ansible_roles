@@ -1,0 +1,5 @@
+---
+# tasks file for role_beta
+- name: "Task in role Beta"
+  debug:
+    msg: "This is from role Beta"

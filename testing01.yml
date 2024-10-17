@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - name: "Task in the main playbook."
+      debug:
+        msg: "This is from the main playbook"
+
+- name: Include role_alpha
+  import_playbook: roles/role_gamma_super/site.yml
