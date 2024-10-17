@@ -1,6 +1,10 @@
 ---
 - hosts: all
+
+  roles:
+    - role_gamma
+
   tasks:
   - name: "Task in role Gamma Super"
     debug:
-      msg: "This is from role Gamma Super"
+      msg: "This is from role Gamma Super : {{ global_variable }}"
