@@ -1,9 +1,33 @@
 ---
-- hosts: localhost
-  tasks:
-    - name: "Task in the main playbook."
-      debug:
-        msg: "This is from the main playbook"
+# Sample execution:
+#   ansible-playbook ./testing01.yml -i localhost, --connection=local -e "global_variable=Here-It-Is"
+################################
+# The first hosts/tasks section
+- name: "Tasks to start with in testing01.yml "
+  hosts: localhost
 
-- name: Include role_alpha
+  roles:
+    - role_alpha
+
+  tasks:
+    - name: "Task in the first part of the testing01.yml playbook."
+      debug:
+        msg: "This is from the first part of the testing01.yml  playbook : {{ global_variable }}"
+
+################################
+# Stand-alone imported playbooks
+- name: Include role_gamma_super outisde of the hosts/roles/tasks
   import_playbook: roles/role_gamma_super/site.yml
+
+################################
+# New hosts/tasks section
+- name: "Some tasks after the include_playbook"
+  hosts: localhost
+
+  roles:
+    - role_beta
+
+  tasks:
+    - name: "Task in the second part of the main testing01.yml playbook."
+      debug:
+        msg: "This is from the second part of the main testing01.yml playbook : {{ global_variable }}"
