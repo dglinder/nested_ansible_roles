@@ -4,7 +4,7 @@
 ################################
 # The first hosts/tasks section
 - name: "Tasks to start with in testing01.yml "
-  hosts: localhost
+  hosts: all
 
   roles:
     - role_alpha
@@ -20,13 +20,25 @@
 
 ################################
 # Stand-alone imported playbooks
-- name: Include role_gamma_super outisde of the hosts/roles/tasks
+- name: IMPORT role_gamma_super outisde of the hosts/roles/tasks
   import_playbook: roles/role_gamma_super/site.yml
+
+################################
+# Use import_tasks/include_tasks within the playbook
+- name: "Tasks from the role_gamma_super/roles/role_gamma/tasks/main.yml"
+  hosts: all
+
+  tasks:
+  - name: IMPORT role_gamma_super outisde of the hosts/roles/tasks
+    import_tasks: roles/role_gamma_super/roles/role_gamma/tasks/main.yml
+  
+  - name: INCLUDE role_gamma_super outisde of the hosts/roles/tasks
+    include_tasks: roles/role_gamma_super/roles/role_gamma/tasks/main.yml
 
 ################################
 # New hosts/tasks section
 - name: "Some tasks after the include_playbook"
-  hosts: localhost
+  hosts: all
 
   roles:
     - role_beta
