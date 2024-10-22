@@ -1,1 +1,1 @@
-global_variable: 'Here from root vars/all.yml'
+global_variable: 'Here from top level group_vars/all.yml'
